@@ -28,7 +28,7 @@ async function updateUsers(
     name,
     password,
     favorite,
-    direction,
+    adress,
     cart,
     email,
     banned
