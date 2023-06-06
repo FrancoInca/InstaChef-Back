@@ -4,7 +4,6 @@ const createProduct = async (
   image,
   name,
   price,
-  description,
   category,
   ingredients,
   stock
@@ -17,7 +16,6 @@ const createProduct = async (
       image,
       name,
       price,
-      description,
       category,
       ingredients,
       stock,
@@ -46,7 +44,6 @@ async function updateProducts(
   image,
   name,
   price,
-  description,
   category,
   ingredients,
   stock
@@ -55,7 +52,6 @@ async function updateProducts(
     image,
     name,
     price,
-    description,
     category,
     ingredients,
     stock,
