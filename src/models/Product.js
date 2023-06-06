@@ -22,17 +22,11 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      description: {
-        type: DataTypes.STRING,
-      },
       category: {
         type: DataTypes.STRING,
       },
       ingredients: {
         type: DataTypes.ARRAY(DataTypes.TEXT),
-      },
-      stock: {
-        type: DataTypes.INTEGER
       },
       reviews: {
         type: DataTypes.ARRAY(DataTypes.JSON),
