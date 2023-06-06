@@ -32,22 +32,21 @@ const handleProductByID = async (req, res) => {
 };
 
 const handleProductCreate = async (req, res) => {
-  const { image, name, price, description, category, ingredients, stock } =
+  const { image, name, price, category, ingredients, stock } =
     req.body;
   try {
     const [newProduct, createdProduct] = await createProduct(
       image,
       name,
       price,
-      description,
       category,
       ingredients,
       stock
     );
     createdProduct
       ? res
-          .status(200)
-          .json({ message: `El platillo ${name} se ha creado exitosamente.` })
+        .status(200)
+        .json({ message: `El platillo ${name} se ha creado exitosamente.` })
       : res.status(200).json({ message: `${name} ya existe.` });
   } catch (error) {
     res.status(400).json(error.message);
@@ -55,7 +54,7 @@ const handleProductCreate = async (req, res) => {
 };
 
 const handleUpdateProduct = async (req, res) => {
-  const { image, name, price, description, category, ingredients, stock, id } =
+  const { image, name, price, category, ingredients, stock, id } =
     req.body;
   try {
     if (!id) return res.status(400).json({ message: 'Falta el ID' });
@@ -63,17 +62,16 @@ const handleUpdateProduct = async (req, res) => {
       image,
       name,
       price,
-      description,
       category,
       ingredients,
       stock
     );
     return updatedProduct
       ? res
-          .status(200)
-          .json({ message: 'Se actualizo el platillo correctamente!' })
+        .status(200)
+        .json({ message: 'Se actualizo el platillo correctamente!' })
       : res.status(400).json({ message: 'No se pudo actualizar el platillo' });
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const handleDeleteProduct = async (req, res) => {
