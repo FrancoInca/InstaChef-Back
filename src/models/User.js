@@ -25,18 +25,27 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false
             },
+
+            adress: {
+                type: DataTypes.STRING
+            },
+
             favorite: {
                 type: DataTypes.ARRAY(DataTypes.STRING),
                 defaultValue: [],
             },
+
+            cart: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+
             banned: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,
-              },
-              cart: {
-                type: DataTypes.TEXT,
-                allowNull: true,
-              },
-        });
-        
+            },
+
+        }
+
+    )
 };

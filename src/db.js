@@ -35,13 +35,17 @@ let capEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capEntries);
 
-let { Product, Order, OrderDetail, User} = sequelize.models; 
+let { Product, Order, OrderDetail, User, Role} = sequelize.models; 
 
 Order.belongsTo(User); //pertenece a un usuario
 User.hasMany(Order); //tiene muchas pedidos
 
 Product.belongsToMany(Order, {through: OrderDetail}); //un producto en varios pedidos
 Order.belongsToMany(Product, {through: OrderDetail}); //un pedido , muchos productos
+Role.belongsToMany(User, { through: 'user_roles' });
+User.belongsToMany(Role, { through: 'user_roles' });
+
+
 
 module.exports = {
   ...sequelize.models,
