@@ -32,6 +32,9 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.JSON),
         defaultValue: [],
       },
+      serving_size:{
+        type: DataTypes.ARRAY(DataTypes.JSON),
+      },
       banned: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
