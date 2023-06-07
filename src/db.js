@@ -50,5 +50,6 @@ User.belongsToMany(Role, { through: 'user_roles' });
 
 module.exports = {
   ...sequelize.models,
+  User,
   conn: sequelize,
 };
