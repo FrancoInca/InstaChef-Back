@@ -12,7 +12,7 @@ module.exports ={
                     ],
         serving_size:["Individual"],
         discount:0,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/CHORIPAN_yc24g5.png",
     },
 
     {
@@ -22,14 +22,14 @@ module.exports ={
         price :44.41,
         ingredients:
                     [
-                        "Pan", "Lomo de carne", "Lechuga", "Tomate", "Cebolla", "Salsa especial"
+                        "Pan", "Lomo de carne", "Lechuga", "Tomate", "Cebolla", "Salsa especial", "Huevo frito"
                     ],
 
         serving_size:[
                         "Individual"
                     ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/Lomito_lwoxwj.jpg",
     },
 
     {
@@ -46,7 +46,7 @@ module.exports ={
                         "Individual"
                     ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/Chivito_ugwann.png",
     },
 
     {
@@ -56,13 +56,13 @@ module.exports ={
         price:49.09,
         ingredients:
                     [
-                        "Hamburguesa", "Carne adobada estilo anticucho", "Papas a la huancaina"
+                        "Hamburguesa", "Carne adobada estilo anticucho", "Papas a la huancaina", "Tomate", "Lechuga"
                     ],
         serving_size:[
                         "Individual"
                     ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160698/instaChef/ANTICUCHO_BURGUER_lpx4nr.png",
     },
 
     {
@@ -72,13 +72,13 @@ module.exports ={
         price:40.22,
         ingredients:
                     [
-                        "Arepa", "Hamburguesa", "Queso", "Salsa de ají"
+                        "Arepa", "Hamburguesa", "Queso", "Salsa de ají", "Tomate", "Lechuga", "Panceta"
                     ],
         serving_size:[
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/AREPA-BURGER_b4ng9u.png",
     },
 
     {
@@ -94,7 +94,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160989/instaChef/Burger_al_pastor_pbpu1r.jpg",
     },
 
 //FRITURAS
@@ -112,7 +112,7 @@ module.exports ={
             "Individual", "Bipersonal", "Familiar"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161038/instaChef/Empanadas_fritas_sh4yqk.jpg",
     },
 
     {
@@ -128,7 +128,7 @@ module.exports ={
             "Individual","Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161105/instaChef/tequen%CC%83os_oexx1j.jpg",
     },
 
     {
@@ -144,7 +144,7 @@ module.exports ={
             "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161147/instaChef/Papas_bravas_irbyt0.jpg",
     },
 
     {
@@ -160,7 +160,7 @@ module.exports ={
             "Individual"
         ],
         discount:23,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161591/instaChef/Patacones_xowva2.png",
     },
 
     {
@@ -176,7 +176,7 @@ module.exports ={
             "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161732/instaChef/chicharron-de-cerdo_plvm3v.jpg",
     },
 
     {
@@ -186,13 +186,13 @@ module.exports ={
         price:47.32,
         ingredients:
                     [
-                        "Totopos de maíz", "Queso fundido", "Frijoles", "Guacamole", "Salsa"
+                        "Totopos de maíz", "Queso fundido", "Guacamole", "Salsa"
                     ],
         serving_size:[
             "Individual", "Bipersonal"
         ],
         discount:32,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161820/instaChef/nachos_jd7tw8.jpg",
     },
 
     //PIZZAS
@@ -210,7 +210,7 @@ module.exports ={
             "Familiar"
         ], 
         discount:2,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686162616/instaChef/pizza_fugazza_mjp8fv.jpg",
     },
 
     {
@@ -226,7 +226,7 @@ module.exports ={
             "Familiar"
         ],
         discount:9,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686162712/instaChef/palmito_ilrfnq.png",
     },
 
     {
@@ -242,7 +242,7 @@ module.exports ={
             "Familiar"
         ],
         discount:10,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686162807/instaChef/pizza_a_la_piedra_ewqbxf.png",
     },
 
     {
@@ -258,24 +258,24 @@ module.exports ={
             "Familiar"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686162892/instaChef/pizza_lomo_saltado_ayy59u.png",
     },
 
-    {
-                // 17
-        name:"Pizza al estilo peruano",
-        category:"Pizzas",
-        price:30.74,
-        ingredients:
-                    [
-                        "Masa de pizza", "Ají de gallina", "Rocoto relleno", "Causa"
-                    ],
-        serving_size:[
-            "Familiar"
-        ],
-        discount:null,
-        image:"",
-    },
+    // {
+    //             // 17
+    //     name:"Pizza al estilo peruano",
+    //     category:"Pizzas",
+    //     price:30.74,
+    //     ingredients:
+    //                 [
+    //                     "Masa de pizza", "Ají de gallina", "Rocoto relleno", "Causa"
+    //                 ],
+    //     serving_size:[
+    //         "Familiar"
+    //     ],
+    //     discount:null,
+    //     image:"",
+    // },
 
     {
                 // 18
@@ -290,7 +290,7 @@ module.exports ={
             "Familiar"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163113/instaChef/tlayuda_jqzo7u.jpg",
     },
 
     //Desayunos
@@ -308,7 +308,7 @@ module.exports ={
             "Individual"
         ],
         discount:4,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163449/instaChef/desayuno_americano_vf3odr.jpg",
     },
 
     {
@@ -324,7 +324,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163536/instaChef/chilaquiles_tgxk2n.jpg",
     },
 
     {
@@ -340,7 +340,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163571/instaChef/arepa-de-ques_xp1ceh.jpg",
     },
 
     {
@@ -356,7 +356,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163613/instaChef/croissant-jamon-queso_pwk1ep.jpg",
     },
 
     {
@@ -366,13 +366,13 @@ module.exports ={
         price:24.9,
         ingredients:
                     [
-                        "Pan", "Huevo", "Leche", "Canela", "Vainilla", "Miel o jarabe de arce"
+                        "Pan", "Huevo", "Leche", "Canela", "Vainilla", "Miel o jarabe de arce", "Frutos rojos"
                     ],
         serving_size:[
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163848/instaChef/tostadas_a_la_francesa_naggwu.jpg",
     },
 
     {
@@ -388,7 +388,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163886/instaChef/pancake_uwx5zu.jpg",
     },
 
     {
@@ -404,7 +404,7 @@ module.exports ={
             "Individual"
         ],
         discount:21,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163932/instaChef/muffins_sh5agm.png",
     },
 
     {
@@ -420,7 +420,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686163986/instaChef/avena_y_leche_wzviv0.jpg",
     },
 
     {
@@ -436,7 +436,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686164215/instaChef/cafe_zwyrl4.jpg",
     },
 
     {
@@ -452,7 +452,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686164433/instaChef/jugo_wnhouu.jpg",
     },
 
     //Ensaladas
@@ -470,7 +470,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686164574/instaChef/Ensalada-cesar_op4ke0.jpg",
     },
 
     {
@@ -486,7 +486,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686164614/instaChef/Ensalada-Caprese_vxyx1p.jpg",
     },
 
     {
@@ -502,7 +502,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686165862/instaChef/ensalada-griega_tt2mnm.jpg",
     },
 
     {
@@ -518,7 +518,7 @@ module.exports ={
             "Individual"
         ],
         discount:2,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686165917/instaChef/ensalada-de-espinacas_luz2fw.jpg",
     },
 
     {
@@ -534,7 +534,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686165958/instaChef/Ensalada-waldorf_blrfbl.jpg",
     },
 
     {
@@ -550,7 +550,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166086/instaChef/quinoa_zfed2z.png",
     },
 
     {
@@ -566,7 +566,7 @@ module.exports ={
             "Individual"
         ],
         discount:22,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166135/instaChef/aguacate_cilantro_rjaoxf.jpg",
     },
 
     {
@@ -582,7 +582,7 @@ module.exports ={
             "Individual"
         ],
         discount:15,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166256/instaChef/tailandesa_ymrsqu.png",
     },
 
     //Postres
@@ -599,7 +599,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166338/instaChef/maicena_pqhtno.jpg",
     },
 
     {
@@ -615,7 +615,7 @@ module.exports ={
             "Individual", "Familiar", "Bipersonal"
         ], //individual
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166380/instaChef/torta_tres_leches_qhwy2a.jpg",
     },
 
     {
@@ -631,7 +631,7 @@ module.exports ={
             "Individual", 
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166448/instaChef/Suspiro-Limeno_dpjnpa.jpg",
     },
 
     {
@@ -647,7 +647,7 @@ module.exports ={
             "Individual", "Bipersonal", "Familiar"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166487/instaChef/arroz-con-leche_q0colp.jpg",
     },
 
     // {
@@ -679,7 +679,7 @@ module.exports ={
             "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166531/instaChef/merengon_jxohmf.jpg",
     },
 
     {
@@ -695,7 +695,7 @@ module.exports ={
             "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166601/instaChef/natilla_dwupim.jpg",
     },
 
     {
@@ -711,7 +711,7 @@ module.exports ={
             "Familiar", "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166652/instaChef/chocotorta_nlat2w.jpg",
     },
 
 
@@ -728,7 +728,7 @@ module.exports ={
             "Familiar", "Individual", "Bipersonal"
         ],
         discount:null,
-        image:"",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686166670/instaChef/arroz-chaufa_hbrs6o.jpg",
     },
 
     // {
