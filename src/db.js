@@ -2,7 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME} = process.env;
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
@@ -35,6 +35,18 @@ let capEntries = entries.map((entry) => [
 ]);
 
 sequelize.models = Object.fromEntries(capEntries);
+
+let { Product, Order, OrderDetail, User, Role} = sequelize.models; 
+
+Order.belongsTo(User); //pertenece a un usuario
+User.hasMany(Order); //tiene muchas pedidos
+
+Product.belongsToMany(Order, {through: OrderDetail}); //un producto en varios pedidos
+Order.belongsToMany(Product, {through: OrderDetail}); //un pedido , muchos productos
+Role.belongsToMany(User, { through: 'user_roles' });
+User.belongsToMany(Role, { through: 'user_roles' });
+
+
 
 module.exports = {
   ...sequelize.models,
