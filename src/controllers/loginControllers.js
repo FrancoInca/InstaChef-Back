@@ -6,7 +6,7 @@ const secretKey = process.env.SECRET_KEY;
 
 const signUp = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, lastName, email, password } = req.body;
     // Verificar si existe el email
     const emailExist = await User.findOne({ where: { email } });
     if (emailExist) {
@@ -15,12 +15,14 @@ const signUp = async (req, res) => {
         .send({ message: "The email is already registered." });
     }
 
-    //Hasheamos la contraseña
+    // Hasheamos la contraseña
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Guardar el usuario
     const newUser = await User.create({
+      name,
+      lastName,
       email,
       password: hashedPassword,
     });
@@ -34,6 +36,7 @@ const signUp = async (req, res) => {
     res.json(error);
   }
 };
+
 
 const login = async (req, res) => {
   try {
