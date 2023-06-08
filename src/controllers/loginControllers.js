@@ -1,8 +1,8 @@
 const { User } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-//const secretKey = "mi_secreto";
-const secretKey = process.env.SECRET_KEY;
+const secretKey = "mi_secreto";
+// const secretKey = process.env.SECRET_KEY;
 
 const signUp = async (req, res) => {
   try {
@@ -59,25 +59,26 @@ const login = async (req, res) => {
   }
 };
 
-const verifyToken = async (req, res, next) => {
-  console.log("VERIFYTOKEN!!! ");
-  const token = req.body["authorization"];
+const verifyToken = (req, res, next) => {
 
-  if (token) {
-    jwt.verify(token, secretKey, (err, decoded) => {
-      if (err) {
-        // El token no es válido
-        return res.status(401).json({ mensaje: "Invalid token." });
-      } else {
-        // El token es válido
-        req.usuario = decoded;
-        next();
-      }
-    });
-  } else {
-    // No se proporcionó un token
-    return res.status(403).json({ mensaje: "Token no proporcionado" });
+  let token = req.headers["x-access-token"]
+console.log(token)
+  if (!token) {
+    return res.status(403).send({
+      message: '¡No se proporciona token!'
+    })
   }
-};
+
+  jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) {
+      return res.status(401).send({
+        message: '¡No autorizado!'
+      })
+    }
+    req.id = decoded.id
+    next()
+  })
+}
+
 
 module.exports = { signUp, login, verifyToken };
