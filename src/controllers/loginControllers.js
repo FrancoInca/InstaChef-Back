@@ -29,9 +29,8 @@ const signUp = async (req, res) => {
 
     // Crear y firmar el JWTOKEN
     const token = jwt.sign({ id: newUser.id, email: newUser.email }, secretKey);
-
+     console.log(token, newUser);
     res.json({ token });
-    console.log(token);
   } catch (error) {
     console.log(error);
     res.json(error);
@@ -44,20 +43,31 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     // Valido que exista el usuario
     const user = await User.findOne({ where: { email } });
-    // if (!user) return res.status(401).send({ message: "Invalid credentials." });
+    let newUser = null
+     if (!user) {
+      newUser = await User.create({
+        email,
+        password
+      });
+      // Crear y firmar un JWT que contenta el ID del usuario
+    const token = jwt.sign({ userId: newUser.id }, secretKey);
+    res.json({ token, newUser });
+    console.log("no estaba", token, newUser )
+     } else {
+      if(password) {
+         // Verificar que la contraseña coincida con la contraseña hasheada en la base de datos
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword)
+          return res.status(401).send({ message: "Invalid credentials." });
+      }
+       // Crear y firmar un JWT que contenta el ID del usuario
+    const token = jwt.sign({ userId: user.id }, secretKey);
+    res.json({ token, user });
+    console.log( "si estaba", token, user);
+     }
+   
 
-    // Verificar que la contraseña coincida con la contraseña hasheada en la base de datos
-    if(password) {
-      const validPassword = await bcrypt.compare(password, user.password);
-      if (!validPassword)
-        return res.status(401).send({ message: "Invalid credentials." });
-  
-    }
-    // Crear y firmar un JWT que contenta el ID del usuario
-    // const token = jwt.sign({ userId: user.id }, secretKey);
-
-    res.json({ user });
-    console.log(user);
+   
   } catch (error) {
     console.log(error);
   }
@@ -73,7 +83,7 @@ console.log(token)
     })
   }
 
-  jwt.verify(token, secretKey, (err, decoded) => {
+   jwt.verify(token, secretKey, (err, decoded) => {
     if (err) {
       return res.status(401).send({
         message: '¡No autorizado!'
