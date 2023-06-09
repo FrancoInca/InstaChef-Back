@@ -1,4 +1,5 @@
 const { User } = require("../db");
+const {Op} = require('sequelize')
 
 async function findOrCreateUser(
     email,
