@@ -1,4 +1,5 @@
 const { Product } = require('../db');
+const { Op } = require("sequelize");
 
 const createProduct = async (
   image,
