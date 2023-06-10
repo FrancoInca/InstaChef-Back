@@ -16,6 +16,11 @@ const handleProducts = async (req, res) => {
         ? res.status(200).json(productsByName)
         : res.status(400).json({ message: `No se encontro ${name}` });
     }
+    else {
+      const allProducts = await Product.findAll();
+      res.status(200).json(allProducts);
+
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
