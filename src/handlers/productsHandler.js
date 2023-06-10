@@ -10,10 +10,12 @@ const { Product } = require('../db');
 const handleProducts = async (req, res) => {
   const { name } = req.query;
   try {
-    const allProducts = !name
-      ? await Product.findAll()
-      : getProductByName(name);
-    return res.status(200).json(allProducts);
+    if (name) {
+      const productsByName = await getProductByName(name);
+      productsByName.length
+        ? res.status(200).json(productsByName)
+        : res.status(400).json({ message: `No se encontro ${name}` });
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
