@@ -47,7 +47,8 @@ async function updateProducts(
   price,
   category,
   ingredients,
-  stock
+  stock,
+  id
 ) {
   const updateProperties = {
     image,
@@ -57,7 +58,6 @@ async function updateProducts(
     ingredients,
     stock,
   };
-
   // Eliminar propiedades undefined o null del objeto
   Object.keys(updateProperties).forEach(
     (key) =>
