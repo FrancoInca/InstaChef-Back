@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const pagosRouter = Router();
-const  pagos = require("../controllers/pagosControllers")
+const handlePayment = require("../handlers/paymentHandler")
 
-pagosRouter.post("/checkout", pagos)
+pagosRouter.post("/checkout", handlePayment)
 
 module.exports = pagosRouter;
