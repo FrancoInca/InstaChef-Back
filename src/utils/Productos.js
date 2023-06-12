@@ -78,7 +78,7 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/AREPA-BURGER_b4ng9u.png",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686602599/instaChef/AREPA-BURGER_wp8r6x.png",
     },
 
     {
