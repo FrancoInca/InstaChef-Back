@@ -39,7 +39,7 @@ const handleProductByID = async (req, res) => {
 };
 
 const handleProductCreate = async (req, res) => {
-  const { image, name, price, category, ingredients, stock } =
+  const { image, name, price, category, ingredients, stock, serving_size } =
     req.body;
   try {
     const [newProduct, createdProduct] = await createProduct(
@@ -48,7 +48,8 @@ const handleProductCreate = async (req, res) => {
       price,
       category,
       ingredients,
-      stock
+      stock,
+      serving_size
     );
     createdProduct
       ? res
