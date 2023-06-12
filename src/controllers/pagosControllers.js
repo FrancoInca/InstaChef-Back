@@ -1,4 +1,28 @@
-const { Pagos, User, Product } = require('../db');
+
+const Stripe = require('stripe');
+require("dotenv").config
+const {STRIPE_SECRET_KEY} = process.env;
+
+const stripe = new Stripe(STRIPE_SECRET_KEY);
+
+const pagos = async (amount, id, products) => {
+  try {
+    const payment = await stripe.paymentIntents.create({
+      amount,
+      currency: 'USD',
+      description: products,
+      payment_method: id,
+      confirm: true,
+    });
+    return payment
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = pagos;
+
+/*const { Pagos, User, Product } = require('../db');
 
 const Stripe = require("stripe")
 const jwt = require("jsonwebtoken");
@@ -47,8 +71,8 @@ const pagos = async (req, res, next) => {
             idCurso,
             userId: usuario.id
           })
-          res.status(200).send("el pago se realizo con exito")
-          console.log("ye ge hasta aqui");
+          res.status(200).send("el pago se realizo con éxito")
+          console.log("llegué hasta aquí");
       }
 
     
@@ -70,7 +94,7 @@ const getProductosPagos = async (req, res, next) => {
           return  res.status(401).send("No autorizado")
         } else {
           usuario = user
-          console.log("verficando que el usuaria se haya decodificado",user);
+          console.log("verificando que el usuaria se haya decodificado",user);
 
         }
       } )
@@ -105,4 +129,5 @@ const getProductosPagos = async (req, res, next) => {
 module.exports = {
     pagos,
     getProductosPagos
-};
+};*/
+
