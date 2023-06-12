@@ -7,7 +7,8 @@ const createProduct = async (
   price,
   category,
   ingredients,
-  stock
+  stock,
+  serving_size
 ) => {
   const [newProduct, created] = await Product.findOrCreate({
     where: {
@@ -20,6 +21,7 @@ const createProduct = async (
       category,
       ingredients,
       stock,
+      serving_size
     },
   });
   return [newProduct, created];
