@@ -45,8 +45,8 @@ Product.belongsToMany(Order, {through: OrderDetail}); //un producto en varios pe
 Order.belongsToMany(Product, {through: OrderDetail}); //un pedido , muchos productos
 Role.belongsToMany(User, { through: 'user_roles' });
 User.belongsToMany(Role, { through: 'user_roles' });
-Pagos.belongsTo(User)
-User.hasMany(Pagos)
+Pagos.belongsTo(User, { foreignKey: "userId" })
+User.hasMany(Pagos, { foreignKey: "userId" })
 
 
 
