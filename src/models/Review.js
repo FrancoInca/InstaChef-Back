@@ -17,8 +17,8 @@ sequelize.define(
             type: DataTypes.TEXT,
             allowNull: false
         },
-        rating_products: {
-            types: DataTypes.INTEGER,
+        rating: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         deleted: {

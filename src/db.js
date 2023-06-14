@@ -49,8 +49,8 @@ Role.belongsToMany(User, { through: 'user_roles' });
 User.belongsToMany(Role, { through: 'user_roles' });
 Pagos.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Pagos, { foreignKey: "userId" });
-Product.hasMany(Review, { foreignKey: "products_name" });
-Review.belongsTo(Product, { foreignKey: "products_name" });
+Product.hasMany(Review, { foreignKey: "productId" });
+Review.belongsTo(Product, { foreignKey: "productId" });
 
 
 
@@ -58,5 +58,7 @@ Review.belongsTo(Product, { foreignKey: "products_name" });
 module.exports = {
   ...sequelize.models,
   User,
+  Product,
+  Review,
   conn: sequelize,
 };
