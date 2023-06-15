@@ -26,6 +26,7 @@ const signUp = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
+      
     });
 
     // Crear y firmar el JWTOKEN
@@ -51,7 +52,7 @@ const login = async (req, res) => {
         email,
         password
       });
-      // Crear y firmar un JWT que contenta el ID del usuario
+      // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: newUser.id }, secretKey);
     res.json({ token, newUser });
     console.log("no estaba", token, newUser )
@@ -62,7 +63,7 @@ const login = async (req, res) => {
         if (!validPassword)
           return res.status(401).send({ message: "Invalid credentials." });
       }
-       // Crear y firmar un JWT que contenta el ID del usuario
+       // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: user.id }, secretKey);
     res.json({ token, user });
     console.log( "si estaba", token, user);
