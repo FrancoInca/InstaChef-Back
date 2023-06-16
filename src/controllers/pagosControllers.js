@@ -31,7 +31,7 @@ const pagos = async (amount, id, productsName, products, token, email) => {
       userId: user.userId,
       email,
     });
-    return { pago: pago, error: null };
+    return { pago: pago, err: null };
   } catch (error) {
     console.log(error.message);
     return { err: error.message, pago: null };
