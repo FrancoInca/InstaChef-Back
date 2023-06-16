@@ -55,7 +55,7 @@ const login = async (req, res) => {
       // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: newUser.id }, secretKey);
     res.json({ token, newUser });
-    console.log("no estaba", token, newUser )
+    // console.log("no estaba", token, newUser )
      } else {
       if(password) {
          // Verificar que la contraseña coincida con la contraseña hasheada en la base de datos
@@ -66,7 +66,7 @@ const login = async (req, res) => {
        // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: user.id }, secretKey);
     res.json({ token, user });
-    console.log( "si estaba", token, user);
+    // console.log( "si estaba", token, user);
      }
    
 

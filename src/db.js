@@ -60,5 +60,6 @@ module.exports = {
   User,
   Product,
   Review,
+  Pagos,
   conn: sequelize,
 };
