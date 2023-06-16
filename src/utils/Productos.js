@@ -5,7 +5,7 @@ module.exports ={
         // 1
         name:"Choripan",
         category:"Hamburguesas",
-       price:66.74,
+        price:46.74,
         ingredients:
                     [
                         "Pan", "Chorizo a la parrilla", "Chimichurri"
@@ -19,7 +19,7 @@ module.exports ={
         // 2
         name:"Lomito",
         category :"Hamburguesas",
-       price :64.41,
+        price :44.41,
         ingredients:
                     [
                         "Pan", "Lomo de carne", "Lechuga", "Tomate", "Cebolla", "Salsa especial", "Huevo frito"
@@ -36,7 +36,7 @@ module.exports ={
         // 3
         name:"Chivito",
         category:"Hamburguesas",
-       price:84.5,
+        price:34.5,
         ingredients:
                     [
                         "Pan", "Carne de res", "Panceta", "Queso", "Huevo", "Lechuga", "Tomate"
@@ -53,7 +53,7 @@ module.exports ={
                 // 4
         name:"Anticucho Burguer",
         category:"Hamburguesas",
-       price:89.09,
+        price:49.09,
         ingredients:
                     [
                         "Hamburguesa", "Carne adobada estilo anticucho", "Papas a la huancaina", "Tomate", "Lechuga"
@@ -69,7 +69,7 @@ module.exports ={
                 // 5
         name:"Arepa burger",
         category:"Hamburguesas",
-       price:80.22,
+        price:40.22,
         ingredients:
                     [
                         "Arepa", "Hamburguesa", "Queso", "Salsa de ají", "Tomate", "Lechuga", "Panceta"
@@ -78,14 +78,14 @@ module.exports ={
             "Individual"
         ],
         discount:null,
-        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686160699/instaChef/AREPA-BURGER_b4ng9u.png",
+        image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686602599/instaChef/AREPA-BURGER_wp8r6x.png",
     },
 
     {
                 // 6
         name:"Tacos al pastor burguer",
         category:"Hamburguesas",
-       price:83.1,
+        price:43.1,
         ingredients:
                     [
                         "Hamburguesa", "Carne al pastor", "Piña", "Cebolla", "Cilantro"
@@ -103,7 +103,7 @@ module.exports ={
                 // 7
         name:"Empanadas",
         category:"Frituras",
-       price:838.65,
+        price: 38.65,
         ingredients:
                     [
                         "Masa", "Relleno de carne, pollo, jamón y queso o verduras"
@@ -119,7 +119,7 @@ module.exports ={
                 // 8
         name:"Tequeños",
         category:"Frituras",
-       price:82.71,
+        price:12.71,
         ingredients:
                     [
                         "Palitos de queso", "Masa frita"
@@ -135,7 +135,7 @@ module.exports ={
                 // 9
         name:"Papas bravas",
         category:"Frituras",
-       price:82.23,
+        price:2.23,
         ingredients:
                     [
                         "Papas fritas", "Salsa picante"
@@ -151,7 +151,7 @@ module.exports ={
                 // 10
         name:"Patacones",
         category:"Frituras",
-       price:80.63,
+        price:20.63,
         ingredients:
                     [
                         "Plátanos verdes fritos", "Carne", "Queso", "Salsa"
@@ -167,7 +167,7 @@ module.exports ={
                 // 11
         name:"Chicharrón de cerdo",
         category:"Frituras",
-       price:80.5,
+        price:20.5,
         ingredients:
                     [
                         "Trozos crujientes de cerdo frito"
@@ -183,7 +183,7 @@ module.exports ={
                 // 12
         name:"Nachos",
         category:"Frituras",
-       price:87.32,
+        price:47.32,
         ingredients:
                     [
                         "Totopos de maíz", "Queso fundido", "Guacamole", "Salsa"
@@ -191,7 +191,7 @@ module.exports ={
         serving_size:[
             "Individual", "Bipersonal"
         ],
-        discount:42,
+        discount:32,
         image:"https://res.cloudinary.com/dbkwplcjs/image/upload/v1686161820/instaChef/nachos_jd7tw8.jpg",
     },
 
@@ -201,7 +201,7 @@ module.exports ={
                 // 13
         name:"Pizza de fugazza",
         category:"Pizzas",
-       price:87.56,
+        price:9.56,
         ingredients:
                     [
                         "Masa de pizza", "Cebolla pochada", "Queso"
@@ -217,7 +217,7 @@ module.exports ={
                 // 14
         name:"Pizza de palmitos",
         category:"Pizzas",
-       price:85.13,
+        price:45.13,
         ingredients:
                     [
                         "Masa de pizza", "Palmitos", "Salsa blanca", "Queso"
@@ -233,7 +233,7 @@ module.exports ={
                 // 15
         name:"Pizza a la piedra",
         category:"Pizzas",
-       price:82.37,
+        price:27.37,
         ingredients:
                     [
                         "Masa de pizza", "Variedad de ingredientes a eleccion"
@@ -249,7 +249,7 @@ module.exports ={
                 // 16
         name:"Pizza de lomo saltado",
         category:"Pizzas",
-       price:85.06,
+        price:9.06,
         ingredients:
                     [
                         "Masa de pizza", "Lomo saltado", "Tomate", "Cebolla", "Ají amarillo"
@@ -265,7 +265,7 @@ module.exports ={
     //             // 17
     //     name:"Pizza al estilo peruano",
     //     category:"Pizzas",
-    //    price:80.74,
+    //     price:30.74,
     //     ingredients:
     //                 [
     //                     "Masa de pizza", "Ají de gallina", "Rocoto relleno", "Causa"
@@ -281,7 +281,7 @@ module.exports ={
                 // 18
         name:"Tlayuda",
         category:"Pizzas",
-       price:80.15,
+        price:40.15,
         ingredients:
                     [
                         "Tortilla de maíz", "Frijoles", "Carne", "Queso", "Aguacate"
@@ -299,7 +299,7 @@ module.exports ={
                 // 19
         name:"Desayuno Americano",
         category:"Desayuno",
-       price:89.2,
+        price:29.2,
         ingredients:
                     [
                         "Huevos revueltos", "Tocino", "Pan tostado",
@@ -315,7 +315,7 @@ module.exports ={
                 // 20
         name:"Chilaquiles",
         category:"Desayuno",
-       price:85.15,
+        price:25.15,
         ingredients:
                     [
                         "Tortilla de maíz frita", "Salsa roja o verde", "Queso", "Crema", "Frijoles refritos", "Huevos al gusto"
@@ -331,7 +331,7 @@ module.exports ={
                 // 21
         name:"Arepa con queso",
         category:"Desayuno",
-       price:85.48,
+        price:45.48,
         ingredients:
                     [
                         "Arepa", "Queso", "Mantequilla"
@@ -347,7 +347,7 @@ module.exports ={
                 // 22
         name:"Croissant de jamón y queso",
         category:"Desayuno",
-       price:81.63,
+        price:21.63,
         ingredients:
                     [
                         "Croissant", "Jamón", "Queso"
@@ -363,7 +363,7 @@ module.exports ={
                 // 23
         name:"Tostadas francesas",
         category:"Desayuno",
-       price:84.9,
+        price:24.9,
         ingredients:
                     [
                         "Pan", "Huevo", "Leche", "Canela", "Vainilla", "Miel o jarabe de arce", "Frutos rojos"
@@ -379,7 +379,7 @@ module.exports ={
                 // 24
         name:"Pancakes",
         category:"Desayuno",
-       price:80.37,
+        price:30.37,
         ingredients:
                     [
                         "Harina", "Huevo", "Leche", "Mantequilla", "Jarabe de arce"
@@ -395,7 +395,7 @@ module.exports ={
                 // 25
         name:"Muffins",
         category:"Desayuno",
-       price:85.19,
+        price:35.19,
         ingredients:
                     [
                         "Harina", "Huevo", "Leche", "Azúcar", "Mantequilla", "Arándanos o chocolate"
@@ -411,7 +411,7 @@ module.exports ={
                 // 26
         name:"Avena con frutas",
         category:"Desayuno",
-       price:86.95,
+        price:46.95,
         ingredients:
                     [
                         "Avena", "Leche", "Frutas variadas", "Miel o azúcar"
@@ -427,7 +427,7 @@ module.exports ={
                 // 27
         name:"Café",
         category:"Desayuno",
-       price:85.50,
+        price:8.50,
         ingredients:
                     [
                         "Café","Leche(Opcional)"
@@ -443,7 +443,7 @@ module.exports ={
                 // 28
         name:"Jugo",
         category:"Desayuno",
-       price:89.00,
+        price:5.00,
         ingredients:
                     [
                         "Jugo de frutas", "Naranja", "Sandia y Menta", "Mango"
@@ -461,7 +461,7 @@ module.exports ={
                 // 29
         name:"Ensalada César",
         category:"Ensalada",
-       price:65.49,
+        price:45.49,
         ingredients:
                     [
                         "Lechuga romana", "Crutones", "Queso parmesano", "Aderezo César"
@@ -477,7 +477,7 @@ module.exports ={
                 // 30
         name:"Ensalada Caprese",
         category:"Ensalada",
-       price:83.15,
+        price:33.15,
         ingredients:
                     [
                         "Tomates", "Queso mozzarella", "Albahaca fresca", "Aceite de oliva", "Vinagre balsámico"
@@ -493,7 +493,7 @@ module.exports ={
                 // 31
         name:"Ensalada Griega",
         category:"Ensalada",
-       price:54.13,
+        price:4.13,
         ingredients:
                     [
                         "Tomates", "Pepino", "Cebolla roja", "Aceitunas", "Queso feta", "Aceite de oliva", "Jugo de limón"
@@ -509,7 +509,7 @@ module.exports ={
                 // 32
         name:"Ensalada de espinacas",
         category:"Ensalada",
-       price:77.67,
+        price:46.67,
         ingredients:
                     [
                         "Espinacas frescas", "Fresas", "Nueces", "Queso de cabra", "Vinagreta de frambuesa"
@@ -525,7 +525,7 @@ module.exports ={
                 // 33
         name:"Ensalada Waldorf",
         category:"Ensalada",
-       price:65.57,
+        price:19.57,
         ingredients:
                     [
                         "Apio", "Manzanas", "Uvas", "Nueces", "Mayonesa vegana"
@@ -541,7 +541,7 @@ module.exports ={
                 // 34
         name:"Ensalada de quinoa",
         category:"Ensalada",
-       price:55.83,
+        price:5.83,
         ingredients:
                     [
                         "Quinoa", "Pepino", "Tomates cherry", "Cebolla roja", "Aceite de oliva", "Jugo de limón"
@@ -557,7 +557,7 @@ module.exports ={
                 // 35
         name:"Ensalada de aguacate y mango",
         category:"Ensalada",
-       price:86.02,
+        price:36.02,
         ingredients:
                     [
                         "Aguacate", "Mango", "Rúcula", "Cilantro", "Jugo de limón"
@@ -573,7 +573,7 @@ module.exports ={
                 // 36
         name:"Ensalada tailandesa de fideos de arroz",
         category:"Ensalada",
-       price:69.13,
+        price:19.13,
         ingredients:
                     [
                         "Fideos de arroz", "Zanahorias", "Cebolla morada", "Cacahuetes", "Salsa de soja", "Cilantro"
@@ -590,7 +590,7 @@ module.exports ={
                 // 37
         name:"Alfajores de maicena",
         category:"Postre",
-       price:75.61,
+        price:25.61,
         ingredients:
                     [
                         "Dulce de leche", "Galletas de maicena", "Coco rallado"
@@ -606,7 +606,7 @@ module.exports ={
                 // 38
         name:"Tres Leches",
         category:"Postre",
-       price:81.85,
+        price:21.85,
         ingredients:
                     [
                         "Leche evaporada", "Leche condensada", "Crema de leche", "Bizcocho", "Merengue"
@@ -622,7 +622,7 @@ module.exports ={
                 // 39
         name:"Suspiro Limeño",
         category:"Desayuno",
-       price:87.24,
+        price:37.24,
         ingredients:
                     [
                         "Leche condensada", "Azúcar", "Yemas de huevo", "Merengue"
@@ -638,7 +638,7 @@ module.exports ={
                 // 40
         name:"Arroz con Leche",
         category:"Postre",
-       price:62.95,
+        price:32.95,
         ingredients:
                     [
                         "Arroz", "Leche", "Azúcar", "Canela", "Pasas"
@@ -654,7 +654,7 @@ module.exports ={
     //             // 41
     //     name:"Arequipe",
     //     category:"Postre",
-    //    price:33.81,
+    //     price:33.81,
     //     ingredients:
     //                 [
     //                     "Leche", "Azúcar", "Vainilla"
@@ -670,7 +670,7 @@ module.exports ={
                 // 42
         name:"Merengón",
         category:"Postre",
-       price:83.84,
+        price:5.84,
         ingredients:
                     [
                         "Merengue", "Crema batida", "Frutas tropicales", "Galletas"
@@ -686,7 +686,7 @@ module.exports ={
                 // 43
         name:"Natilla",
         category:"Postre",
-       price:65.49,
+        price:25.49,
         ingredients:
                     [
                         "Leche", "Azúcar", "Maicena", "Canela"
@@ -702,7 +702,7 @@ module.exports ={
                 // 44
         name:"Chocotorta",
         category:"Postre",
-       price:74.96,
+        price:34.96,
         ingredients:
                     [
                         "Chocolinas", "Dulce de Leche", "Crema", "Café"
@@ -719,7 +719,7 @@ module.exports ={
                 // 45
         name:"Arroz chaufa",
         category:"Frituras",
-       price:68.92,
+        price:48.92,
         ingredients:
                     [
                         "Arroz", "Pechuga de pollo", "Pimiento rojo", "Huevos", "Cebollita china", "Aceite de girasol", "Salsa de soja", "Jengibre rallado", "Aceite de sesamo"

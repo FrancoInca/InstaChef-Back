@@ -7,7 +7,8 @@ const createProduct = async (
   price,
   category,
   ingredients,
-  stock
+  stock,
+  serving_size
 ) => {
   const [newProduct, created] = await Product.findOrCreate({
     where: {
@@ -20,6 +21,7 @@ const createProduct = async (
       category,
       ingredients,
       stock,
+      serving_size
     },
   });
   return [newProduct, created];
@@ -47,7 +49,8 @@ async function updateProducts(
   price,
   category,
   ingredients,
-  stock
+  stock,
+  id
 ) {
   const updateProperties = {
     image,
@@ -57,7 +60,6 @@ async function updateProducts(
     ingredients,
     stock,
   };
-
   // Eliminar propiedades undefined o null del objeto
   Object.keys(updateProperties).forEach(
     (key) =>

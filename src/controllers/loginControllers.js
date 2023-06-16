@@ -1,31 +1,9 @@
 const { User } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
+const mailer = require("../functions/mailer");
 const secretKey = "mi_secreto";
 // const secretKey = process.env.SECRET_KEY;
-
- async function mailer(email) {
-    const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: "instachef2@gmail.com",
-      pass: "ylhfxhukvdnoleam",
-    },
-  });
-
-  let info = await transporter.sendMail({
-    from: '"👩‍🍳InstaChef👨‍🍳" <instachef2@gmail.com>',
-    to: email,
-    subject: "Registro exitoso",
-    text: "Bienvenido a InstaChef",
-    html: "<b>Bienvenido a InstaChef, gracias por elegirnos y que disfrute de su comida!</b>",
-  });
-
-  console.log("Message sent: %s" + info.messageId);
-}
 
 const signUp = async (req, res) => {
   try {
@@ -48,6 +26,7 @@ const signUp = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
+      
     });
 
     // Crear y firmar el JWTOKEN
@@ -73,7 +52,7 @@ const login = async (req, res) => {
         email,
         password
       });
-      // Crear y firmar un JWT que contenta el ID del usuario
+      // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: newUser.id }, secretKey);
     res.json({ token, newUser });
     console.log("no estaba", token, newUser )
@@ -84,7 +63,7 @@ const login = async (req, res) => {
         if (!validPassword)
           return res.status(401).send({ message: "Invalid credentials." });
       }
-       // Crear y firmar un JWT que contenta el ID del usuario
+       // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: user.id }, secretKey);
     res.json({ token, user });
     console.log( "si estaba", token, user);
