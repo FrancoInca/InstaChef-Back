@@ -36,12 +36,7 @@ async function updateUsers(
 ) {
     const updateUser = await User.update(
         {
-            name,
-            password,
-            favorite,
-            adress,
-            cart,
-            banned,
+            name
         },
         {
             where: { email: email },

@@ -11,7 +11,7 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 
 const pagos = async (req, res, next) => {
     try {
-      let  { amount, id, email, nombre, idCurso, token} = req.body
+      let  { amount, id, email, nombre, idFood, token} = req.body
         let usuario = null
       jwt.verify(token, secretKey, (err, user) => {
         if(err) {
@@ -44,7 +44,7 @@ const pagos = async (req, res, next) => {
             email,
             nombre,
             amount,
-            idCurso,
+            idCurso: idFood,
             userId: usuario.id
           })
           res.status(200).send("el pago se realizo con exito")
@@ -55,6 +55,7 @@ const pagos = async (req, res, next) => {
    
     } catch (error) {
         console.log(error.message);
+        res.json({error: error.message})
         next(error);
     }
 };
@@ -63,7 +64,6 @@ const getProductosPagos = async (req, res, next) => {
   try {
     let {token} = req.body
     console.log(req.body)
-    console.log(token);
     let usuario = null
     jwt.verify(token, secretKey, (err, user) => {
         if(err) {
@@ -77,20 +77,25 @@ const getProductosPagos = async (req, res, next) => {
       console.log("verificando que este el id del user", usuario);
       if(usuario) {
         let {userId} = usuario
+        console.log("userid", userId);
       usuario = await User.findOne({where: {id: userId}})
-
+     console.log("rem", usuario);
       let pagos = await Pagos.findAll({where: {userId: usuario.id }})
+    console.log("pagodb,", pagos);
+      let todosLosIds = []
+      for (let i = 0; i < pagos.length; i++) {
+        const element = pagos[i];
+        todosLosIds.push(element.id)
+        
+      }
+       console.log("idesarray", todosLosIds);
+      const productos = await Product.findAll()
+      // if(productos.length) {
+      //   const productosPagos = productos.filter((obj) => todosLosIds.includes(obj.id) )
 
-      const todosLosIds = pagos.reduce((acc, obj) => {
-        return [...acc, ...obj.idCurso]
-      }, [])
-
-      const productosPagos = await Product.findAll({where: {id: {
-        [Op.in]: todosLosIds
-      }}})
-
-      console.log(productosPagos);
-      res.status(200).json(productosPagos)
+      // console.log( "pproduc", productosPagos);
+      res.status(200).json(productos)
+      
 
       }
      
