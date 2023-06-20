@@ -4,7 +4,7 @@ module.exports = (sequelize)=> {
 
     sequelize.define('role', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             primaryKey:true,
         },
         name: {

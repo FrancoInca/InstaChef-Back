@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       payment_status: {
         type: DataTypes.STRING
       },
-      adress: {
+      address: {
         type: DataTypes.STRING,
         allowNull: true
       },

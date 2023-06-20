@@ -14,7 +14,7 @@ const pagos = async (amount, id, productsName, products, token, email) => {
     jwt.verify(token, secretKey, (err, userVerified) => {
       if (err) throw new Error('Usuario no autorizado');
       user = userVerified;
-      console.log(user);
+      // console.log(user);
     });
     const payment = await stripe.paymentIntents.create({
       amount,
@@ -37,6 +37,16 @@ const pagos = async (amount, id, productsName, products, token, email) => {
     return { err: error.message, pago: null };
   }
 };
+
+const allPayments = async () => {
+  try {
+    const allPayments = await Pagos.findAll();
+    console.log(allPayments);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const paymentHistory = async (token) => {
   try {
     let usuario = null;
@@ -65,4 +75,4 @@ const paymentHistory = async (token) => {
   }
 };
 
-module.exports = { pagos, paymentHistory };
+module.exports = { pagos, paymentHistory, allPayments };

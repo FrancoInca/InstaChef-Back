@@ -62,24 +62,41 @@ const handleProductCreate = async (req, res) => {
 };
 
 const handleUpdateProduct = async (req, res) => {
-  const { image, name, price, category, ingredients, stock, id } =
-    req.body;
+  const {
+    image,
+    name,
+    price,
+    category,
+    ingredients,
+    stock,
+    id,
+    serving_size,
+    banned,
+  } = req.body;
+  const foodToUpdate = {
+    image,
+    name,
+    price,
+    category,
+    ingredients,
+    stock,
+    id,
+    serving_size,
+    banned,
+  };
   try {
     if (!id) return res.status(400).json({ message: 'Falta el ID' });
-    const updatedProduct = await updateProducts(
-      image,
-      name,
-      price,
-      category,
-      ingredients,
-      stock
-    );
-    return updatedProduct
-      ? res
+    const updatedProduct = await updateProducts(foodToUpdate);
+    return (
+      updatedProduct &&
+      res
         .status(200)
         .json({ message: 'Se actualizo el platillo correctamente!' })
-      : res.status(400).json({ message: 'No se pudo actualizar el platillo' });
-  } catch (error) { }
+    );
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: error.message });
+  }
 };
 
 const handleDeleteProduct = async (req, res) => {
