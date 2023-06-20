@@ -16,7 +16,7 @@ router.use('/users', usersRouter);
 router.use('/products', productsRouter);
 router.use('/login', loginRouter );
 router.use("/", pagosRouter);
-router.use('/:public_id', deleteImage);
+router.use('/imag/:public_id', deleteImage);
 
 
 

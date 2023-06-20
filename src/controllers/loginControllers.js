@@ -9,12 +9,6 @@ const signUp = async (req, res) => {
   try {
     const { name, lastName, email, password } = req.body;
     // Verificar si existe el email
-    const emailExist = await User.findOne({ where: { email } });
-    if (emailExist) {
-      return res
-        .status(400)
-        .send({ message: 'The email is already registered.' });
-    }
 
     // Hasheamos la contraseña
     const saltRounds = 10;

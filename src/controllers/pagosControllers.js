@@ -6,7 +6,7 @@ require('dotenv').config;
 const secretKey = 'mi_secreto';
 const { STRIPE_SECRET_KEY } = process.env;
 
-
+const stripe = new Stripe(STRIPE_SECRET_KEY);
 const pagos = async (amount, id, productsName, products, token, email) => {
   try {
     let user;
