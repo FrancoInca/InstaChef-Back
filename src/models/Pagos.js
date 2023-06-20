@@ -8,30 +8,18 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-  
-      metodo: {
+      method: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,    
+        allowNull: false,
       },
-      nombre: {
-          type: DataTypes.STRING,
-          allowNull: false,
-         
-      },
-      amount: {
-         type: DataTypes.INTEGER,
-         allowNull: false
-      },
-      idCurso: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      products: {
+        type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false,
       }
-   
-      
     },
     {
       timestamps: true,

@@ -1,120 +1,77 @@
-
+const jwt = require('jsonwebtoken');
 const Stripe = require('stripe');
-require("dotenv").config
-const {STRIPE_SECRET_KEY} = process.env;
-
-
-const { Pagos, User, Product } = require('../db');
-
-
-const jwt = require("jsonwebtoken");
+const { Pagos, Product } = require('../db');
 const { Op } = require('sequelize');
-const secretKey = "mi_secreto";
+require('dotenv').config;
+const secretKey = 'mi_secreto';
+const { STRIPE_SECRET_KEY } = process.env;
 
 
-const stripe = new Stripe(STRIPE_SECRET_KEY)
-
-const pagos = async (req, res, next) => {
-    try {
-      let  { amount, id, email, nombre, idFood, token} = req.body
-        let usuario = null
-      jwt.verify(token, secretKey, (err, user) => {
-        if(err) {
-          return  res.status(401).send("No autorizado")
-        } else {
-          usuario = user
-          console.log(user);
-        }
-      } )
-      if(usuario) {
-        let {userId} = usuario
-      usuario = await User.findOne({where: {id:userId}})
-
-      }
-        const payment = await stripe.paymentIntents.create({
-        amount,
-         currency: "USD",
-         description: "prueba",
-         payment_method: id,
-         confirm: true
-        })
-       
-       if(!payment?.status === "succeeded") {
-         return  res.status(401).send("Hubo un error con los datos del pago")
-       }
-     let ids = idFood.map(p => p.id)
-      if(usuario) {
-        let pago = await Pagos.create({
-            metodo: payment.payment_method,
-            email,
-            nombre,
-            amount,
-            idCurso: ids ,
-            userId: usuario.id
-          })
-          res.status(200).send("el pago se realizo con éxito")
-          console.log("llegué hasta aquí");
-      }
-
-    
-   
-    } catch (error) {
-        console.log(error.message);
-        res.json({error: error.message})
-        next(error);
-    }
-};
-
-const getProductosPagos = async (req, res, next) => {
+const pagos = async (amount, id, productsName, products, token, email) => {
   try {
-    let {token} = req.body
-    console.log(req.body)
-    let usuario = null
-    jwt.verify(token, secretKey, (err, user) => {
-        if(err) {
-          return  res.status(401).send("No autorizado")
-        } else {
-          usuario = user
-          console.log("verificando que el usuaria se haya decodificado",user);
-
-        }
-      } )
-      console.log("verificando que este el id del user", usuario);
-      if(usuario) {
-        let {userId} = usuario
-        console.log("userid", userId);
-      let user = await User.findOne({where: {id: userId}})
-     console.log("rem", user);
-      let pagos = await Pagos.findAll({where: {userId: user.id }})
-    console.log("pagodb,", pagos);
-      let todosLosIds = pagos.flatMap(objeto => objeto.idCurso)
-       console.log("idesarray", todosLosIds);
-      const productos = await Product.findAll({
-        where: {
-          id: {
-            [Op.in]: todosLosIds
-          }
-        }
-      })
-     
-   return   res.status(200).json(productos)
-      
-
-      } else {
-        console.log("error");
-        return res.status(400).send("usuario no autorizado")
-      }
-     
-
+    let user;
+    jwt.verify(token, secretKey, (err, userVerified) => {
+      if (err) throw new Error('Usuario no autorizado');
+      user = userVerified;
+      // console.log(user);
+    });
+    const payment = await stripe.paymentIntents.create({
+      amount,
+      currency: 'USD',
+      description: productsName,
+      payment_method: id,
+      confirm: true,
+    });
+    if (payment.status !== 'succeeded')
+      throw new Error('Hubo un error con los datos del pago');
+    let pago = await Pagos.create({
+      method: payment.payment_method,
+      products: products.map((e) => e.id),
+      userId: user.userId,
+      email,
+    });
+    return { pago: pago, err: null };
   } catch (error) {
-    res.status(400).json("erro el el server")
+    console.log(error.message);
+    return { err: error.message, pago: null };
   }
-    
-}
-
-
-module.exports = {
-    pagos,
-    getProductosPagos
 };
 
+const allPayments = async () => {
+  try {
+    const allPayments = await Pagos.findAll();
+    console.log(allPayments);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const paymentHistory = async (token) => {
+  try {
+    let usuario = null;
+    jwt.verify(token, secretKey, (err, user) => {
+      if (err) throw new Error('Usuario no autorizado');
+      usuario = user;
+      console.log('verificando que el usuaria se haya decodificado', user);
+    });
+    console.log('verificando que este el id del user', usuario);
+    if (usuario) {
+      let { userId } = usuario;
+      let pagos = await Pagos.findAll({ where: { userId: userId } });
+      const allIds = pagos.reduce((acc, obj) => {
+        return [...acc, ...obj.products];
+      }, []);
+      const productosPagos = await Product.findAll({
+        where: { id: { [Op.in]: allIds } },
+      });
+      if (!productosPagos.length)
+        throw new Error('No se encontraron productos');
+      return { products: productosPagos.map((e) => e.dataValues), error: null };
+    }
+  } catch (error) {
+    console.log(error.message);
+    return { error: error.message, products: null };
+  }
+};
+
+module.exports = { pagos, paymentHistory, allPayments };

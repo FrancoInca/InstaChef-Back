@@ -38,15 +38,15 @@ let capEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capEntries);
 
-let { Product, Order, OrderDetail, User, Role, Pagos, Review} = sequelize.models; 
+let { Product, Order, OrderDetail, User, Role, Pagos, Review } = sequelize.models; 
 
 Order.belongsTo(User); //pertenece a un usuario
 User.hasMany(Order); //tiene muchas pedidos
 
 Product.belongsToMany(Order, {through: OrderDetail}); //un producto en varios pedidos
 Order.belongsToMany(Product, {through: OrderDetail}); //un pedido , muchos productos
-Role.belongsToMany(User, { through: 'user_roles' });
-User.belongsToMany(Role, { through: 'user_roles' });
+User.belongsTo(Role, { foreignKey: 'user_roles' });
+Role.hasMany(User, { foreignKey: 'user_roles' });
 Pagos.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Pagos, { foreignKey: "userId" });
 Product.hasMany(Review, { foreignKey: "productId" });
@@ -60,5 +60,7 @@ module.exports = {
   User,
   Product,
   Review,
+  Pagos,
+  Role,
   conn: sequelize,
 };
