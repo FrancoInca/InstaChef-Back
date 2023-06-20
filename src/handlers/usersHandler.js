@@ -1,8 +1,11 @@
+const jwt = require('jsonwebtoken');
+const secretKey = 'mi_secreto';
 const {
   findOrCreateUser,
   updateUsers,
   deleteUser,
   searchUsersByName,
+  verifyUser,
 } = require('../controllers/usersControllers');
 const { User } = require('../db');
 
@@ -21,19 +24,47 @@ const handleUsersAll = async (req, res) => {
   }
 };
 
+const handleUserByToken = async (req, res) => {
+  const { token } = req.params;
+
+  try {
+    let user;
+    jwt.verify(token, secretKey, (err, userVerified) => {
+      if (err) return res.status(401).send('Acceso no autorizado');
+      user = userVerified;
+      // console.log(user);
+    });
+    const userResponse = await User.findByPk(user.userId);
+    return res.status(200).json(userResponse);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const handleUserById = async (req, res) => {
   const { userId } = req.params;
   try {
     const user = await User.findByPk(userId);
-
     return res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
+const handleVerifyUser = async (req, res) => {
+  const { token } = req.params;
+  try {
+    const response = await verifyUser(token);
+    if (response.err) throw new Error(response.err);
+    return res.status(200).json({ role: response.role });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(400).json({ role: 0, error: error.message });
+  }
+};
+
 const handleUserCreate = async (req, res) => {
-  const propNecesarias = ['email', 'name', 'password', 'adress'];
+  const propNecesarias = ['email', 'name', 'password', 'address'];
   const propFaltantes = [];
   propNecesarias.forEach((prop) => {
     if (!req.body[prop]) {
@@ -83,17 +114,17 @@ const handleUpdateUser = async (req, res) => {
       ? res
           .status(200)
           .json({ message: 'Se actualizo el usuario correctamente!' })
-      : res.status(400).json({ message: 'No se actualizo ningun usuario' });
+      : res.status(400).json({ message: 'No se actualizo ningún usuario' });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
 const handleDeleteUser = async (req, res) => {
-  const { UserID } = req.params;
+  const { userId } = req.params;
   try {
-    deleteUser(UserID);
-    res.status(200).json({ message: 'el usuario ha sido eliminado' });
+    const data = await deleteUser(userId);
+    res.status(200).json(data);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -106,4 +137,6 @@ module.exports = {
   handleUpdateUser,
   handleDeleteUser,
   handleUpdateUser,
+  handleVerifyUser,
+  handleUserByToken,
 };
