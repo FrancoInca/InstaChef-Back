@@ -34,7 +34,7 @@ const handlePayment = async (req, res) => {
           name: response.dataValues.name,
           quantity: idFood[i].quantity,
         });
-        updateProducts(null, null, null, null, null, diff, idFood[i].id);
+        updateProducts({ id: idFood[i].id, stock: diff });
       }
     }
     const products = names.map((e) => `${e.name} x${e.quantity}`).join(', ');
