@@ -21,7 +21,7 @@ const signUp = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Guardar el usuario
-    const newUser = await User.create({
+    const user = await User.create({
       name,
       lastName,
       email,
@@ -30,9 +30,9 @@ const signUp = async (req, res) => {
     });
 
     // Crear y firmar el JWTOKEN
-    const token = jwt.sign({ id: newUser.id, email: newUser.email }, secretKey);
-     console.log(token, newUser);
-    res.json({ token });
+    const token = jwt.sign({ id: user.id, email: user.email }, secretKey);
+     console.log(token, user);
+    res.json({ token, user: user });
     mailer(req.body.email).catch(console.error);
   } catch (error) {
     console.log(error);
@@ -54,7 +54,7 @@ const login = async (req, res) => {
       });
       // Crear y firmar un JWT que contenga el ID del usuario
     const token = jwt.sign({ userId: newUser.id }, secretKey);
-    res.json({ token, newUser });
+    res.json({ token, user });
     console.log("no estaba", token, newUser )
      } else {
       if(password) {

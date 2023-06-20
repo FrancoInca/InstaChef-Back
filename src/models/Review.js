@@ -9,10 +9,6 @@ sequelize.define(
             allowNull: false,
             primaryKey: true
         },
-        title:{
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         body:{
             type: DataTypes.TEXT,
             allowNull: false
@@ -23,15 +19,15 @@ sequelize.define(
         },
         deleted: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
             defaultValue: false
         },
         active: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
             defaultValue: true
           },
-          
+          userId: {
+            type: DataTypes.STRING
+          }
 
     },
     {
