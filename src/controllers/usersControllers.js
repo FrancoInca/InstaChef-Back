@@ -1,5 +1,5 @@
 const { User } = require("../db");
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 const jwt = require('jsonwebtoken');
 const secretKey = 'mi_secreto';
 
@@ -65,6 +65,19 @@ async function updateUsers(
   return updateUser;
 }
 
+
+async function updateFavorites(id, favorite) {
+  const updateUser = await User.update(
+    {
+      favorite,
+    },
+    {
+      where: { id: id },
+    }
+  );
+  return updateFavorites;
+}
+
 async function updateProfile(email, name, address) {
   const updateProfile = await User.update(
     {
@@ -107,4 +120,5 @@ module.exports = {
   searchUsersByName,
   updateProfile,
   verifyUser,
+  updateFavorites,
 };
