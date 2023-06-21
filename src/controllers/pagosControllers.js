@@ -5,6 +5,27 @@ const { Op } = require('sequelize');
 require('dotenv').config;
 const secretKey = 'mi_secreto';
 const { STRIPE_SECRET_KEY } = process.env;
+const nodemailer = require("nodemailer");
+
+async function mailer(email) {
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: "instachef2@gmail.com",
+            pass: "ylhfxhukvdnoleam",
+        },
+    });
+
+    let info = await transporter.sendMail({
+        from: '"👩‍🍳InstaChef👨‍🍳" <instachef2@gmail.com>',
+        to: email,
+        subject: "Pago confirmado",
+        text: "Su pago ha sido realizado con exito",
+        html: "<b>¡Gracias por comprar en InstaChef! En instantes será entregado su pedido. ¡Muchas gracias!</b>",
+    });
+}
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 const pagos = async (amount, id, productsName, products, token, email) => {
@@ -30,6 +51,7 @@ const pagos = async (amount, id, productsName, products, token, email) => {
       userId: user.userId,
       email,
     });
+    mailer(pago.email).catch(console.error);
     return { pago: pago, err: null };
   } catch (error) {
     console.log(error.message);
