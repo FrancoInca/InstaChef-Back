@@ -1,15 +1,29 @@
 const { User } = require('../../db');
 const fs = require('fs');
 const path = require('path');
+const jwt = require("jsonwebtoken");
+const secretKey = "mi_secreto";
 
 const updateProfilePhoto = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const { profilePhoto } = req.body;
+  
+    const { profilePhoto, token } = req.body;
+   console.log("token aqui", token);
+
+   // Decodificando el token
+   let usuario = null
+   jwt.verify(token, secretKey, (err, user) => {
+     if(err) {
+       return  res.status(401).send("No autorizado")
+     } else {
+       usuario = user
+       console.log(user);
+     }
+   } )
 
     // Buscar el usuario por su ID
-    const user = await User.findByPk(userId);
-
+    const user = await User.findByPk(usuario.userId);
+   console.log(user);
     // Verificar si se encontró el usuario
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
@@ -30,8 +44,9 @@ const updateProfilePhoto = async (req, res) => {
     user.profilePhoto = profilePhoto;
     await user.save();
 
-    return res.json({ message: 'Foto de perfil actualizada correctamente', user });
+    return res.json({ token, message: 'Foto de perfil actualizada correctamente', user });
   } catch (error) {
+    console.log(error.message);
     return res.status(500).json({ error: error.message });
   }
 };

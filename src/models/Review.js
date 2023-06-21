@@ -13,6 +13,12 @@ sequelize.define(
             type: DataTypes.TEXT,
             allowNull: false
         },
+        foto: {
+            type: DataTypes.STRING,
+        },
+        nameUser: {
+           type: DataTypes.STRING
+        },
         rating: {
             type: DataTypes.INTEGER,
             allowNull: true

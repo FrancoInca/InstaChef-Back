@@ -3,6 +3,6 @@ const profilePhotoRouter = express.Router();
 const  updateProfilePhoto  = require('../controllers/profilePhotoControllers/profilePhoto');
 
 
-profilePhotoRouter.put('/users/:userId/profile-photo', updateProfilePhoto);
+profilePhotoRouter.put('/users/profile-photo', updateProfilePhoto);
 
 module.exports = profilePhotoRouter;
