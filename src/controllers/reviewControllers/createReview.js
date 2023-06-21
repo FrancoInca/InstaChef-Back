@@ -17,15 +17,22 @@ const createReview = async (req, res) => {
       }
     } )
 
+    const user = await User.findByPk(usuario.userId);
+    if(user) {
+      usuario = user
+    }
+
    
- 
+    console.log(usuario);
     const product = await Product.findByPk(productId);
     const review = await Review.create({
+      nameUser: usuario.name,
+      foto: usuario.profilePhoto,
       body: body,
       rating: rating,
       productId: product.id,
       active: true,
-      userId: usuario.userId
+      userId: usuario.id
     });
       console.log(review);
     return res.status(200).json({ message: 'Review created successfully.' }); 
