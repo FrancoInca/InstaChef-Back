@@ -23,7 +23,7 @@ const signUp = async (req, res) => {
     });
 
     // Crear y firmar el JWTOKEN
-    const token = jwt.sign({ id: user.id, email: user.email }, secretKey);
+    const token = jwt.sign({ userId: user.id, email: user.email }, secretKey);
     // console.log(token, user);
     res.json({ token, user: user });
     mailer(req.body.email).catch(console.error);
