@@ -6,6 +6,7 @@ const {
   deleteUser,
   searchUsersByName,
   verifyUser,
+  updateFavorites,
 } = require('../controllers/usersControllers');
 const { User } = require('../db');
 
@@ -87,8 +88,8 @@ const handleUserCreate = async (req, res) => {
       );
       createdUser
         ? res
-            .status(200)
-            .json({ message: `El usuario ${email} se ha creado exitosamente` })
+          .status(200)
+          .json({ message: `El usuario ${email} se ha creado exitosamente` })
         : res.status(200).json({ message: `Ya existe usuario con ${email}` });
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -112,11 +113,45 @@ const handleUpdateUser = async (req, res) => {
     );
     return updateUser
       ? res
-          .status(200)
-          .json({ message: 'Se actualizo el usuario correctamente!' })
+        .status(200)
+        .json({ message: 'Se actualizo el usuario correctamente!' })
       : res.status(400).json({ message: 'No se actualizo ningún usuario' });
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+const handleFavorites = async (req, res) => {
+  let { userId } = req.params;
+  let { productId } = req.body;
+
+  try {
+
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'usuario no encontrado' });
+    }
+
+    if (!Array.isArray(productId)) {
+      productId = [productId];
+    }
+
+    const isProductInFavorites = productId.some((id) => user.favorite.includes(id));
+
+    if (isProductInFavorites) {
+      user.favorite = user.favorite.filter((fav) => !productId.includes(fav));
+      await user.save();
+      return res.status(200).json(user);
+    }
+
+    user.favorite.push(...productId);
+    await user.save();
+
+    await updateFavorites(userId, user.favorite);
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log(error)
   }
 };
 
@@ -139,4 +174,5 @@ module.exports = {
   handleUpdateUser,
   handleVerifyUser,
   handleUserByToken,
+  handleFavorites,
 };
