@@ -43,34 +43,19 @@ const getProductById = async (productId) => {
   return product;
 };
 
-async function updateProducts(
-  image,
-  name,
-  price,
-  category,
-  ingredients,
-  stock,
-  id
-) {
-  const updateProperties = {
-    image,
-    name,
-    price,
-    category,
-    ingredients,
-    stock,
-  };
+async function updateProducts(food) {
+  const updateProperties = { ...food };
   // Eliminar propiedades undefined o null del objeto
   Object.keys(updateProperties).forEach(
     (key) =>
       (updateProperties[key] === undefined || updateProperties[key] === null) &&
       delete updateProperties[key]
   );
-  console.log(updateProperties);
+  // console.log(updateProperties);
 
   const updateProduct = await Product.update(updateProperties, {
     where: {
-      id: id,
+      id: food.id,
     },
   });
 

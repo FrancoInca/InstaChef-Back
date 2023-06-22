@@ -28,10 +28,10 @@ module.exports = (sequelize) => {
       ingredients: {
         type: DataTypes.ARRAY(DataTypes.TEXT),
       },
-      reviews: {
-        type: DataTypes.ARRAY(DataTypes.JSON),
-        defaultValue: [],
-      },
+      // reviews: {
+      //   type: DataTypes.ARRAY(DataTypes.JSON),
+      //   defaultValue: [],
+      // },
       serving_size:{
         type: DataTypes.ARRAY(DataTypes.JSON),
       },

@@ -26,7 +26,9 @@ fs.readdirSync(path.join(__dirname, '/models'))
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
-modelDefiners.forEach((model) => model(sequelize));
+   modelDefiners.forEach((model) => model(sequelize));
+
+  
 
 let entries = Object.entries(sequelize.models);
 let capEntries = entries.map((entry) => [
@@ -36,22 +38,29 @@ let capEntries = entries.map((entry) => [
 
 sequelize.models = Object.fromEntries(capEntries);
 
-let { Product, Order, OrderDetail, User, Role, Pagos} = sequelize.models; 
+let { Product, Order, OrderDetail, User, Role, Pagos, Review } = sequelize.models; 
 
 Order.belongsTo(User); //pertenece a un usuario
 User.hasMany(Order); //tiene muchas pedidos
 
 Product.belongsToMany(Order, {through: OrderDetail}); //un producto en varios pedidos
 Order.belongsToMany(Product, {through: OrderDetail}); //un pedido , muchos productos
-Role.belongsToMany(User, { through: 'user_roles' });
-User.belongsToMany(Role, { through: 'user_roles' });
-Pagos.belongsTo(User, { foreignKey: "userId" })
-User.hasMany(Pagos, { foreignKey: "userId" })
+User.belongsTo(Role, { foreignKey: 'user_roles' });
+Role.hasMany(User, { foreignKey: 'user_roles' });
+Pagos.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Pagos, { foreignKey: "userId" });
+Product.hasMany(Review, { foreignKey: "productId" });
+Review.belongsTo(Product, { foreignKey: "productId" });
+
 
 
 
 module.exports = {
   ...sequelize.models,
   User,
+  Product,
+  Review,
+  Pagos,
+  Role,
   conn: sequelize,
 };

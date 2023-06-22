@@ -1,10 +1,14 @@
 const { Router } = require('express');
 const pagosRouter = Router();
-// const  {pagos, getProductosPagos} = require("../controllers/pagosControllers")
-const handlePayment = require("../handlers/paymentHandler")
 
-pagosRouter.post("/checkout", handlePayment)
-// pagosRouter.post("/checkout", pagos)
-// pagosRouter.post("/productosPagos", getProductosPagos)
+const {
+  handlePayment,
+  handleProductHistory,
+  handleAllPayments,
+} = require('../handlers/paymentHandler');
+
+pagosRouter.post('/checkout', handlePayment);
+pagosRouter.get('/productHistory/:token', handleProductHistory);
+pagosRouter.get('/payments/all/:token', handleAllPayments);
 
 module.exports = pagosRouter;
