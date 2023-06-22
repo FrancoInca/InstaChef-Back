@@ -75,7 +75,7 @@ async function updateFavorites(id, favorite) {
       where: { id: id },
     }
   );
-  return updateFavorites;
+  return updateUser;
 }
 
 async function updateProfile(email, name, address) {
