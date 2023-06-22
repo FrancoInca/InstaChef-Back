@@ -1,5 +1,9 @@
 const e = require('express');
-const {pagos, paymentHistory} = require('../controllers/pagosControllers');
+const {
+  pagos,
+  paymentHistory,
+  allPayments,
+} = require('../controllers/pagosControllers');
 const {
   getProductById,
   updateProducts,
@@ -37,19 +41,33 @@ const handlePayment = async (req, res) => {
         updateProducts({ id: idFood[i].id, stock: diff });
       }
     }
-    const products = names.map((e) => `${e.name} x${e.quantity}`).join(', ');
-    const {err} = pagos(amount, id, products, idFood, token, email)
-    if (err) return res.status(400).send(payment)
-    return res.status(200).json({ message: `Se completo la compra de ${products}` });
+    const products = names.map((e) => `x${e.quantity} ${e.name}`).join(', ');
+    const { err } = pagos(amount, id, products, idFood, token, email);
+    if (err) return res.status(400).send(payment);
+    return res
+      .status(200)
+      .json({ message: `Se completo la compra de ${products}` });
   } catch (error) {
     console.log(error.message);
   }
 };
 
-const handleProductHistory = async (req,res) => {
+const handleProductHistory = async (req, res) => {
   const { token } = req.params;
-  const {products, error} = await paymentHistory(token)
-  if (!error) return res.status(200).json(products)
-  return res.status(404).json(error)
-}
-module.exports = { handlePayment, handleProductHistory };
+  const { products, error } = await paymentHistory(token);
+  if (!error) return res.status(200).json(products);
+  return res.status(404).json(error);
+};
+
+const handleAllPayments = async (req, res) => {
+  const { token } = req.params;
+  try {
+    const response = await allPayments(token);
+    if (response.err) return res.status(401).json(response.err);
+    return res.status(200).json(response.data);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+};
+
+module.exports = { handlePayment, handleProductHistory, handleAllPayments };

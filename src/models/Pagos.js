@@ -2,26 +2,36 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     
-    sequelize.define('pagos', {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
+    sequelize.define(
+      'pagos',
+      {
+        id: {
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
+          primaryKey: true,
+        },
+        method: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        email: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        products: {
+          type: DataTypes.ARRAY(DataTypes.JSON),
+          allowNull: false,
+        },
+        description: {
+          type: DataTypes.STRING,
+        },
+        totalAmount: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
       },
-      method: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      products: {
-        type: DataTypes.ARRAY(DataTypes.JSON),
-        allowNull: false,
+      {
+        timestamps: true,
       }
-    },
-    {
-      timestamps: true,
-    });
+    );
   };

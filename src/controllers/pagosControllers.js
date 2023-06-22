@@ -49,6 +49,8 @@ const pagos = async (amount, id, productsName, products, token, email) => {
       method: payment.payment_method,
       products: products.map((e) => e.id),
       userId: user.userId,
+      description: productsName,
+      totalAmount: amount,
       email,
     });
     mailer(pago.email).catch(console.error);
@@ -59,12 +61,28 @@ const pagos = async (amount, id, productsName, products, token, email) => {
   }
 };
 
-const allPayments = async () => {
+const allPayments = async (token) => {
   try {
+    let usuario;
+    jwt.verify(token, secretKey, (err, user) => {
+      if (err) throw new Error('Usuario no autorizado');
+      usuario = user;
+    });
+    if (!usuario || usuario.userId !== 1)
+      throw new Error('No tiene autorización.');
     const allPayments = await Pagos.findAll();
-    console.log(allPayments);
+    const data = allPayments.map((e) => {
+      return {
+        name: e.dataValues.description,
+        amount: e.dataValues.totalAmount,
+        email: e.dataValues.email,
+        id: e.dataValues.id,
+      };
+    });
+    return { data, err: null };
   } catch (error) {
     console.log(error.message);
+    return { err: error.message };
   }
 };
 
